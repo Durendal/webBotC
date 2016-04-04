@@ -28,17 +28,17 @@ Response::Response(std::string curlData)
 	while(getline(data, iLine))
 		content += iLine;
 	for (std::vector<std::string>::iterator it = headers.begin(); it != headers.end(); ++it)
-    	if((*it).find("HTTP/1.1") != std::string::npos)
-    	{
-    		statusStr = (*it).substr(9, 3);
-    		status = atoi(statusStr.c_str());
-    		break;
-    	}
-    if(!status)
-    {
-    	std::cout << "Error parsing status code!\n";
-    	exit(1);
-    }
+		if((*it).find("HTTP/1.1") != std::string::npos)
+		{
+			statusStr = (*it).substr(9, 3);
+			status = atoi(statusStr.c_str());
+			break;
+		}
+	if(!status)
+	{
+		std::cout << "Error parsing status code!\n";
+		exit(1);
+	}
 	setUID();	
 }
 
@@ -47,8 +47,8 @@ void Response::setUID()
 	std::istringstream convert;
 	std::hash<std::string> str_hash;
 	std::time_t timeNow = std::time(NULL);
-    convert >> timeNow;
-    content += convert.str();
-    uid = str_hash(content);
+	convert >> timeNow;
+	content += convert.str();
+	uid = str_hash(content);
 }
 
