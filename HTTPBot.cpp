@@ -28,11 +28,11 @@ HTTPBot::HTTPBot(std::string prxy, int port, proxy_type_t pType, std::string cre
 	lastRequest = new Response();
 	curl_easy_setopt(ch->getCH(), CURLOPT_WRITEFUNCTION, WriteCallback);
 	std::cout << "This works...\n";
-    curl_easy_setopt(ch->getCH(), CURLOPT_WRITEDATA, &readBuffer);
-    url = "http://www.google.ca";
-    curl_easy_setopt(ch->getCH(), CURLOPT_URL, url.c_str());
-    std::cout << "hmmm...\n";
-    CURLcode res = curl_easy_perform(ch->getCH());
+	curl_easy_setopt(ch->getCH(), CURLOPT_WRITEDATA, &readBuffer);
+	url = "http://www.google.ca";
+	curl_easy_setopt(ch->getCH(), CURLOPT_URL, url.c_str());
+	std::cout << "hmmm...\n";
+	CURLcode res = curl_easy_perform(ch->getCH());
 
 	if(res != CURLE_OK)
 	{
@@ -42,9 +42,9 @@ HTTPBot::HTTPBot(std::string prxy, int port, proxy_type_t pType, std::string cre
 	else
 		std::cout << content << std::endl;
 	url = "http://www.msn.ca";
-    ch->setCH();
-    curl_easy_setopt(ch->getCH(), CURLOPT_URL, url.c_str());
-    std::cout << "hmmm...\n";
+	ch->setCH();
+	curl_easy_setopt(ch->getCH(), CURLOPT_URL, url.c_str());
+	std::cout << "hmmm...\n";
 	res = curl_easy_perform(ch->getCH());
 
 	if(res != CURLE_OK)
